@@ -1,17 +1,32 @@
 {
   "name": "capstone-2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "express": "^4.14.0",
     "mocha": "^3.1.2",
-    "mongodb": "^2.2.11"
-  }
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.8"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holmberg18/lego-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Holmberg18/lego-builder/issues"
+  },
+  "homepage": "https://github.com/Holmberg18/lego-builder#readme",
+  "description": ""
 }
