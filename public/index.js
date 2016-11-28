@@ -28,6 +28,11 @@ var MOCK_LEGO_BUILDS = {
     ]
 };
 
+
+
+//https://rebrickable.com/api/<function> API call
+
+
 // this function's name and argument can stay the
 // same after we have a live API, but its internal
 // implementation will change. Instead of using a
@@ -37,6 +42,15 @@ var MOCK_LEGO_BUILDS = {
 function getRecentLegoBuilds(callbackFn) {
     // we use a `setTimeout` to make this asynchronous
     // as it would be with a real AJAX call.
+    
+    
+    var partID = $('#input-field').val();
+    
+    $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&param_id='+partID, function(data){
+    console.log(data);
+  })
+
+
 	setTimeout(function(){ callbackFn(MOCK_LEGO_BUILDS)}, 1);
 }
 
@@ -44,7 +58,11 @@ function getRecentLegoBuilds(callbackFn) {
 // to real API later
 function displayLegoBuilds(data) {
     for (index in data.legoBuilds) {
-	   $('body').append(
+	   //$('body').append(
+    //     '<p>' + data.legoBuilds[index].text + '</p>');
+    // }
+    
+    $('body').append(
         '<p>' + data.legoBuilds[index].text + '</p>');
     }
 }
