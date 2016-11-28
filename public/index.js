@@ -43,13 +43,19 @@ function getRecentLegoBuilds(callbackFn) {
     // we use a `setTimeout` to make this asynchronous
     // as it would be with a real AJAX call.
     
-    
+     input.on('keydown', function(event) {
+    if (event.keyCode != 13) {
+        return;
+    }
     var partID = $('#input-field').val();
     
     $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&param_id='+partID, function(data){
     console.log(data);
   })
 
+
+});
+  
 
 	setTimeout(function(){ callbackFn(MOCK_LEGO_BUILDS)}, 1);
 }
