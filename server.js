@@ -4,6 +4,8 @@ var app = express();
 
 var config = require('./config');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var app = express();
 var passport = require('passport');
