@@ -19,7 +19,8 @@
     "mocha": "^3.1.2",
     "mongodb": "^2.2.11",
     "mongoose": "^4.6.8",
-    "passport": "^0.3.2"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "directories": {
     "test": "test"

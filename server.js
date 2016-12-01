@@ -6,6 +6,8 @@ var config = require('./config');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var LocalStrategy = require('passport-local').Strategy;
+var jsonParser = bodyParser.json();
 
 var app = express();
 var passport = require('passport');
