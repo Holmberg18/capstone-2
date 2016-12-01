@@ -44,14 +44,21 @@ function getRecentLegoBuilds(callbackFn) {
     // as it would be with a real AJAX call.
     
     
-     var input = $('#input-field').val();
+     var input = $('#input-field');
+     
+     
     
      input.on('keydown', function(event) {
     if (event.keyCode != 13) {
         return;
     }
    
-    $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&param_id='+partID, function(data){
+    $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&format=json&part_id='+input.val(), function(data){
+    console.log(data);
+  })
+
+
+     $.get('https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&color_id=&setheader=0&part_id='+input.val(), function(data){
     console.log(data);
   })
 
