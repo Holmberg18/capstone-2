@@ -101,25 +101,57 @@ $(document).ready(function(){
 	    var userName = $('#log-in-username').val();
 	    var passWord = $('#log-in-password').val();
 	    
-	    jQuery.post('/login', {username: userName, password: passWord}, function(err,data){
-	    
-	    console.log(err);
-	    console.log(data);
-	    
-	       //data: JSON.stringify({
-        //   username: data.username,
-        //   password: data.password
-        // })
-	    
-	   	},"json");
-	    
-	    
+	    $.ajax({
+             url:'/login',
+             type:"POST",
+             data: JSON.stringify({username: userName, password: passWord}),
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+               console.log('Success login: '+data);
+             }
+        });
 	});
 	
-	jQuery.get('/pieces', function(res){
-    
-		console.log(res);
-		
+	jQuery('.user-create').submit(function(e){
+	    e.preventDefault();
+	    
+	    var newUsername = $('#create-username').val();
+	    var newPassword = $('#create-password').val();
+	    
+	      $.ajax({
+             url:'/users',
+             type:"POST",
+             data: JSON.stringify({username: newUsername, password: newPassword}),
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+               console.log('successful user registration: '+data);
+             }
+        });
 	});
+	
+	
+});//end document.ready
+	    
+	   // jQuery.post('/login', {username: userName, password: passWord}, function(err,data){
+	        
+	        
+	    
+	   // console.log(err);
+	   // console.log(data);
+	    
+	   //    //data: JSON.stringify({
+    //     //   username: data.username,
+    //     //   password: data.password
+    //     // })
+	    
+	   //	},"json");
+	    
+	 
+// 	jQuery.get('/pieces', function(res){
+    
+// 		console.log(res);
 		
-});
+// 	});
+		

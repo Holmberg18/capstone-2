@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-
+var bcrypt = require('bcryptjs');
 var config = require('./config');
 var mongoose = require('mongoose');
 var session = require('express-session');
@@ -19,17 +19,6 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 
-app.post('/login', passport.authenticate('local'), function(req, res) {
-  return res.status(200).json({
-    alias: req.user.alias,
-    username: req.user.username,
-    isAuthenticated: true
-  });
-});
-app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-});
 
 
 app.use(session({
@@ -87,6 +76,20 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
+app.post('/login', passport.authenticate('local'), function(req, res) {
+  return res.status(200).json({
+    alias: req.user.alias,
+    username: req.user.username,
+    isAuthenticated: true
+  });
+});
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
+
 app.post('/users', jsonParser, function(req, res) {
     if (!req.body) {
         return res.status(400).json({
@@ -111,23 +114,23 @@ app.post('/users', jsonParser, function(req, res) {
         });
     }
     //
-    if (!('alias' in req.body)) {
-        return res.status(422).json({
-            message: 'Missing field: alias'
-        });
-    }
-    var alias = req.body.alias;
-    if (typeof alias !== 'string') {
-        return res.status(422).json({
-            message: 'Incorrect field type: alias'
-        });
-    }
-    alias = alias.trim();
-    if (username === '') {
-        return res.status(422).json({
-            message: 'Incorrect field length: alias'
-        });
-    }
+    // if (!('alias' in req.body)) {
+    //     return res.status(422).json({
+    //         message: 'Missing field: alias'
+    //     });
+    // }
+    // var alias = req.body.alias;
+    // if (typeof alias !== 'string') {
+    //     return res.status(422).json({
+    //         message: 'Incorrect field type: alias'
+    //     });
+    // }
+    // alias = alias.trim();
+    // if (username === '') {
+    //     return res.status(422).json({
+    //         message: 'Incorrect field length: alias'
+    //     });
+    //}
     //
     if (!('password' in req.body)) {
         return res.status(422).json({
@@ -161,7 +164,7 @@ app.post('/users', jsonParser, function(req, res) {
                 });
             }
             var user = new User({
-                alias: alias,
+              // alias: alias,
                 username: username,
                 password: hash
             });
