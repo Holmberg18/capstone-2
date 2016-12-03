@@ -95,8 +95,29 @@ $(function() {
 
 $(document).ready(function(){
 	
+	jQuery('.user-login').submit(function(e){
+	    e.preventDefault();
+	    
+	    var userName = $('#log-in-username').val();
+	    var passWord = $('#log-in-password').val();
+	    
+	    jQuery.post('/login', {username: userName, password: passWord}, function(err,data){
+	    
+	    console.log(err);
+	    console.log(data);
+	    
+	       //data: JSON.stringify({
+        //   username: data.username,
+        //   password: data.password
+        // })
+	    
+	   	},"json");
+	    
+	    
+	});
+	
 	jQuery.get('/pieces', function(res){
-		
+    
 		console.log(res);
 		
 	});
