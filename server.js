@@ -221,7 +221,7 @@ app.get('/pieces', function(req,res){
 app.post('/pieces', function(req,res){
     
     var query = {"_id": req.user.id};
-    var update = {$push:{favorites: {title: req.body.partName, partId: req.body.partId}}};
+    var update = {$push:{favorites: {title: req.body.partName, id: req.body.partId}}};
 
     User.findOneAndUpdate(query, update, function(err){
         
