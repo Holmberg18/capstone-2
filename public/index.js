@@ -93,10 +93,35 @@ $(function() {
 	getAndDisplayLegoBuilds();
 })
 
-$('.search-pieces').hide();
-$('.builds').hide();
+
+function addPiece(piece){
+    
+    $.ajax({
+             url:'/pieces',
+             type:"POST",
+             data: JSON.stringify({partId:piece.part_id, partName: piece.name}),
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+              console.log('piece has been added');
+             }
+        });
+    
+}
+	$('.search-pieces').hide();
+    $('.builds').hide();
+    $('.login-create').hide();
 $(document).ready(function(){
-	
+
+
+
+    jQuery('.login-link').submit(function(e){
+        e.preventDefault();
+        $('.login-create').show();
+        $('.welcome').hide();
+    });
+    
+    
 	jQuery('.user-login').submit(function(e){
 	    e.preventDefault();
 	    
@@ -114,6 +139,7 @@ $(document).ready(function(){
                jQuery('.login-create').hide();
                $('.search-pieces').show();
                 $('.builds').show();
+                 jQuery('.creation-message').hide();
              }
         });
 	});
@@ -132,9 +158,9 @@ $(document).ready(function(){
              dataType:"json",
              success: function(data){
                console.log('successful user registration: '+data);
-               jQuery('.login-create').hide();
-               $('.search-pieces').show();
-                $('.builds').show();
+                $('body').append('<p class="creation-message">User Account Created!</p>');
+                $('#create-username').val('');
+	             $('#create-password').val('');
              }
         });
 	});
@@ -154,10 +180,16 @@ $(document).ready(function(){
                $('.piece-title').html(data.name);
                $('.piece-description').html(data.category);
                
+               	jQuery('.add-piece').click(function(){
+                    addPiece(data);
+	            
+            	});
+               
              }
         });
 	});
 	
+
 	
 	
 });//end document.ready

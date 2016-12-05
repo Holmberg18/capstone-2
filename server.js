@@ -211,7 +211,25 @@ if (require.main === module) {
 };
 
 app.get('/pieces', function(req,res){
+    
+    
 	
 	res.status(200).json({message:'root url connected'});
 	
+});
+
+app.post('/pieces', function(req,res){
+    
+    var query = {"_id": req.user.id};
+    var update = {$push:{favorites: {title: req.body.partName, partId: req.body.partId}}};
+
+    User.findOneAndUpdate(query, update, function(err){
+        
+        console.log(err);
+    
+    	res.status(201).json({message:'piece added'});
+    
+});
+
+
 });

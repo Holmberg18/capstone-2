@@ -13,9 +13,12 @@ var UserSchema = new mongoose.Schema ({
         required: true
     },
     alias: String,
-    favorites: [{title: String, id: String}]
+    favorites: [{title: String, id: String}],
+    
 });
 
 var User = mongoose.model('User', UserSchema);
+
+
 
 module.exports = User;
