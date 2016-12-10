@@ -35,18 +35,11 @@
      <form class="piece-input">
        <input id="piece-number" type="text">
        <button type="submit" class="piece-submit">Search</button>
+       <button type="submit" class="find-sets">Find Sets</button>
      </form>
      
          <div class='pieces'>
-              <div class='piece'>
-                  <h2 class='piece-title'></h2>
-                  <p class='piece-description'></p>
-                  <button type='button' class='add-piece'>Add Piece</button>
-                  <button type='button' class='remove-piece'>Remove Piece</button>
-              
-                  <img class='piece-image'/>
-                
-              </div>
+            
          </div>
  </div>
  
@@ -54,12 +47,28 @@
   <div class='build'>
     <h2 class='build-title'></h2>
     <img class='build-image'/>
-      <button type='submit' class='add-favorite'>Add Favorite</button>
-      <button type='submit' class='remove-favorite'>Remove Favorite</button>
+      <button type='button' class='add-favorite'>Add Favorite</button>
+      <button type='button' class='remove-favorite'>Remove Favorite</button>
+      <button type='button' class='get-favorites'>Get Favorite Pieces</button>
+      <!--<button type='button' class='show-favorites'>Show Favorite Groups</button>-->
   </div>
 </div>
  
+<div class='favorites-section'>
  
+</div>
+ 
+ <div class="template" style="display:none">
+     <div class='piece'>
+                  <h2 class='piece-title'></h2>
+                  <p class='piece-description'></p>
+                  <button type='button' class='add-piece'>Add Piece</button>
+                  <button type='button' class='remove-piece'>Remove Piece</button>
+              
+                  <a class="image-link" target="_new"><img class='piece-image'/></a>
+                
+              </div>
+ </div>
   <!--<input id="input-part-sets" type="text">-->
 
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>

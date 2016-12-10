@@ -13,7 +13,8 @@ var UserSchema = new mongoose.Schema ({
         required: true
     },
     alias: String,
-    favorites: [{title: String, id: String}],
+    favorites: [{name: String, part_id: String, part_url: String, part_img_url: String, category: String}],
+    favoriteGroup: [{favoriteSet: String}]
     
 });
 

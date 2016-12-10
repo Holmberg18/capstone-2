@@ -1,32 +1,6 @@
 
 
-
-
-var MOCK_LEGO_BUILDS = {
-	"legoBuilds": [
-        {
-            "id": "favorite_set_01",
-            "text": "This is my biggest set yet!",
-            "username": "holmberg18",
-            "friendName": "John Doe",
-            "publishedAt": 1470016976609
-        },
-        {
-            "id": "favorite_set_02",
-            "text": "Here's a set that my little brother made",
-            "username": "holmberg18",
-            "friendName": "John Doe",
-            "publishedAt": 1470012976609
-        },
-        {
-            "id": "favorite_set_03",
-            "text": "A set I made when I was bored at work",
-            "username": "holmberg18",
-            "friendName": "John Doe",
-            "publishedAt": 1470011976609
-        }
-    ]
-};
+var STATE = {pieces: []};
 
 
 
@@ -48,25 +22,86 @@ function getRecentLegoBuilds(callbackFn) {
      
      
     
-     input.on('keydown', function(event) {
-    if (event.keyCode != 13) {
-        return;
-    }
+//      input.on('keydown', function(event) {
+//     if (event.keyCode != 13) {
+//         return;
+//     }
    
-    $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&format=json&part_id='+input.val(), function(data){
-    console.log(data);
-  })
+//     $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&format=json&part_id='+input.val(), function(data){
+//     console.log(data);
+//   })
 
 
-     $.get('https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&color_id=&setheader=0&part_id='+input.val(), function(data){
-    console.log(data);
-  })
+//      $.get('https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&color_id=&setheader=0&part_id='+input.val(), function(data){
+//     console.log(data);
+//   })
 
 
-});
+// });
   
 
-	setTimeout(function(){ callbackFn(MOCK_LEGO_BUILDS)}, 1);
+
+}
+
+function getSetByPart(callbackFn) {
+    // we use a `setTimeout` to make this asynchronous
+    // as it would be with a real AJAX call.
+    console.log(STATE.pieces);
+    var total = 0;
+    var sets = {};
+    var matchSets = [];
+    STATE.pieces.forEach(function(piece){
+        
+        var endpoint = 'https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&part_id='+piece.part_id+'&color_id=&setheader=0';
+        console.log(endpoint);
+           $.ajax({
+             url:endpoint,
+             type:"GET",
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+                 total++;
+                 piece.sets = data[0].sets;
+                 console.log(data);
+                 
+                findMatch(total);
+                 
+             },error:function(err){
+                 console.log(err);
+                 total++;
+                 findMatch(total);
+             } //end success
+        });
+        
+    });
+     
+     function findMatch(total){
+         
+            if (total == STATE.pieces.length){
+                     STATE.pieces.forEach(function(piece){
+                         if(!piece.sets){
+                             return;
+                         }
+                         piece.sets.forEach(function(set_part){
+                            if(set_part.set_id in sets){
+                                sets[set_part.set_id]++;
+                                
+                            } else{
+                                    sets[set_part.set_id] = 1;
+                            } 
+                            
+                            if(sets[set_part.set_id] == total){
+                                matchSets.push(set_part);
+                            }
+                         });
+                         
+                         
+                     });
+                     callbackFn(matchSets);
+                 }
+     }
+       
+
 }
 
 // this function stays the same when we connect
@@ -93,13 +128,69 @@ $(function() {
 	getAndDisplayLegoBuilds();
 })
 
+function showPiece(piece) {
+    
+    // console.log(piece);
+    
+   var template = $('.template .piece').clone();
+       template = $(template);
+       
+     if(piece._id){
+         template.find('.add-piece').hide();
+     } else{
+         template.find('.remove-piece').hide();
+     }
+        template.find('.piece-title').text(piece.name);
+        template.find('.piece-description').text(piece.category);
+        template.find('.piece-image').attr("src", piece.part_img_url);
+         template.find('.image-link').attr("href", piece.part_img_url);
+         
+         
+         	
+	template.find('.remove-piece').click(function(){
+	    
+	       $.ajax({
+             url:'/pieces/'+piece._id,
+             type:"DELETE",
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+              console.log(data);
+              
+             } //end success
+        });
+        
+        template.find('.remove-piece').parent().remove();
+       
+	    
+	    
+	});
+        
+        return template;
+}
+
+function addFavorite(favorite){
+    
+      $.ajax({
+             url:'/favorites',
+             type:"POST",
+             data: JSON.stringify({favoriteSet:favorite.favoriteSet}),
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+            console.log("Your favorite set is" + data);
+              console.log('favorite has been added');
+              console.log("Your favorite sets saved are:" + data);
+             }
+        });
+}
 
 function addPiece(piece){
     
     $.ajax({
              url:'/pieces',
              type:"POST",
-             data: JSON.stringify({partId:piece.part_id, partName: piece.name}),
+             data: JSON.stringify({partId:piece.part_id, partName: piece.name, partURL: piece.part_url, partImage: piece.part_img_url,category:piece.category}),
              contentType:"application/json; charset=utf-8",
              dataType:"json",
              success: function(data){
@@ -112,7 +203,17 @@ function addPiece(piece){
     $('.builds').hide();
     $('.login-create').hide();
 $(document).ready(function(){
-
+    
+    
+    jQuery('.find-sets').click(function(){
+         
+        
+        getSetByPart(function(match_sets){
+            console.log(match_sets);
+            
+        });
+        
+    });
 
 
     jQuery('.login-link').submit(function(e){
@@ -177,8 +278,12 @@ $(document).ready(function(){
              dataType:"json",
              success: function(data){
                 console.log(data);
-               $('.piece-title').html(data.name);
-               $('.piece-description').html(data.category);
+                
+                 $('.pieces').html('');
+
+               var template = showPiece(data);
+               
+               $('.pieces').html(template);
                
                	jQuery('.add-piece').click(function(){
                     addPiece(data);
@@ -189,6 +294,40 @@ $(document).ready(function(){
         });
 	});
 	
+	jQuery('.get-favorites').click(function(e){
+	    e.preventDefault();
+	   
+	       $.ajax({
+             url:'/pieces',
+             type:"GET",
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+                console.log(data);
+                STATE.pieces = data;
+                 $('.favorites-section').html('');
+                 $('.pieces').html('');
+                 
+                data.forEach(function(item){
+                    
+                    var template = showPiece(item);
+                 $('.favorites-section').append(template);
+                
+                    
+                })
+                
+        
+             } //end success
+        });
+	});
+
+
+	jQuery('.add-favorite').click(function(e){
+	    e.preventDefault();
+	    
+	    var userFavorite = $('.favorites-section').html();
+	    addFavorite(userFavorite);
+	});
 
 	
 	

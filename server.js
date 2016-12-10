@@ -213,15 +213,20 @@ if (require.main === module) {
 app.get('/pieces', function(req,res){
     
     
-	
-	res.status(200).json({message:'root url connected'});
+    
+    User.findOne({"_id":req.user._id}, function(err,user){
+        //receives user from the callback
+        console.log(err);
+        return res.json(user.favorites);
+        
+    });
 	
 });
 
 app.post('/pieces', function(req,res){
     
     var query = {"_id": req.user.id};
-    var update = {$push:{favorites: {title: req.body.partName, id: req.body.partId}}};
+    var update = {$push:{favorites: {name: req.body.partName, part_id: req.body.partId, part_url: req.body.partURL, part_img_url: req.body.partImage, category: req.body.partDesc}}};
 
     User.findOneAndUpdate(query, update, function(err){
         
@@ -233,3 +238,45 @@ app.post('/pieces', function(req,res){
 
 
 });
+
+
+app.delete('/pieces/:id', function(req,res){
+    
+    var query = {"_id": req.user.id};
+    var update = {$pull:{favorites:{"_id":req.params.id}}};
+
+    User.findOneAndUpdate(query, update, function(err){
+        
+        console.log(err);
+    
+    	res.status(200).json({message:'piece deleted'});
+    
+});
+
+
+});
+
+app.post('/favorites', function(req,res){
+    
+    var query = {"_id": req.user.id};
+    
+    var update = {$push:{favoriteGroup: {favoriteSet: req.body.favoriteSet}}};
+
+    User.findOneAndUpdate(query, update, function(err){
+        
+        console.log(err);
+        console.log("Your favorite set is " + req.body.favoriteSet);
+    	res.status(201).json({message:'favorite added'});
+    
+    });
+
+});
+// app.get('/sets', function(req,res){
+    
+//   User.find({'favorites'}, function (err,favorites){
+//   console.log(err);
+//   console.log(favorites);
+// });
+
+
+// });
