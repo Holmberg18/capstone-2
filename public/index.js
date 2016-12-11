@@ -53,7 +53,7 @@ function getSetByPart(callbackFn) {
     STATE.pieces.forEach(function(piece){
         
         var endpoint = 'https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&part_id='+piece.part_id+'&color_id=&setheader=0';
-        console.log(endpoint);
+      // console.log(endpoint);
            $.ajax({
              url:endpoint,
              type:"GET",
@@ -62,9 +62,25 @@ function getSetByPart(callbackFn) {
              success: function(data){
                  total++;
                  piece.sets = data[0].sets;
-                 console.log(data);
-                 
-                findMatch(total);
+                // console.log(data);
+                 findMatch(total);
+                 console.log('find matches are type: ' + JSON.stringify(typeof matchSets));
+                 console.log(matchSets);
+            
+                $('.favorites-section').html('');
+                
+                
+                matchSets.forEach(function(item){
+                    var index = 0;
+                    var template = showSet(item);
+                 $('.favorites-section').append(template);
+                    index++;
+                    if (index == 3){
+                        return;
+                    }
+                    
+                });
+                
                  
              },error:function(err){
                  console.log(err);
@@ -128,6 +144,48 @@ $(function() {
 	getAndDisplayLegoBuilds();
 })
 
+function showSet(piece) {
+    
+    // console.log(piece);
+    
+   var template = $('.template .piece').clone();
+       template = $(template);
+       
+     if(piece.set_id){
+         template.find('.add-piece').hide();
+     } else{
+         template.find('.remove-piece').hide();
+     }
+        template.find('.piece-title').text(piece.name);
+        template.find('.piece-description').text("number of parts: " +piece.num_parts);
+        // template.find('.piece-image').attr("src", piece.img_sm);
+        // template.find('.image-link').attr("href", piece.img_sm);
+         
+         
+         	
+	template.find('.remove-piece').click(function(){
+	    
+	       $.ajax({
+             url:'/pieces/'+piece.set_id,
+             type:"DELETE",
+             contentType:"application/json; charset=utf-8",
+             dataType:"json",
+             success: function(data){
+              console.log(data);
+              
+             } //end success
+        });
+        
+        template.find('.remove-piece').parent().parent().remove();
+       
+	    
+	    
+	});
+        
+        return template;
+}
+
+
 function showPiece(piece) {
     
     // console.log(piece);
@@ -143,7 +201,7 @@ function showPiece(piece) {
         template.find('.piece-title').text(piece.name);
         template.find('.piece-description').text(piece.category);
         template.find('.piece-image').attr("src", piece.part_img_url);
-         template.find('.image-link').attr("href", piece.part_img_url);
+        template.find('.image-link').attr("href", piece.part_img_url);
          
          
          	
@@ -209,7 +267,7 @@ $(document).ready(function(){
          
         
         getSetByPart(function(match_sets){
-            console.log(match_sets);
+           // console.log(match_sets);
             
         });
         
@@ -277,7 +335,7 @@ $(document).ready(function(){
              contentType:"application/json; charset=utf-8",
              dataType:"json",
              success: function(data){
-                console.log(data);
+                //console.log(data);
                 
                  $('.pieces').html('');
 
@@ -314,7 +372,7 @@ $(document).ready(function(){
                  $('.favorites-section').append(template);
                 
                     
-                })
+                });
                 
         
              } //end success
