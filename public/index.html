@@ -2,40 +2,58 @@
  <head>
 	<title>Lego Builder</title>
 	<meta charset="utf-8">
+	  <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
  </head>
  <body>
-      
+
+<style>
+
+</style>
+ <div class="container">     
       
   <!--<input id="input-field" type="text">-->
- <div class="welcome">
+ <div style="text-align:center" class="welcome">
   <form class="login-link">
    <h1>Welcome, please login!</h1>
   <button type="submit" class="login-button">Login</button>
   </form>
   </div>
   
- <div class="login-create">
+ <div style="text-align:center" class="login-create">
  <h1>Login here</h1>
- <form class="user-login"> 
-  <input id="log-in-username" type="text">
-  <input id="log-in-password" type="password">
-   <button type="submit" class="password-submit">Login</button>
+ <form class="user-login" style="display: flex;
+    flex-direction: column;
+    padding: 0 20em;"> 
+  <input style="width:400px; margin: 0 auto;" id="log-in-username" type="text">
+  <input style="width:400px; margin: 0 auto;" id="log-in-password" type="password">
+  <div stlye="text-align:center">
+   <button style="margin-top:2em;" type="submit" class="password-submit">Login</button>
+   </div>
  </form>
     <h1>Create account here</h1>
- <form class="user-create"> 
-  <input id="create-username" type="text">
-  <input id="create-password" type="password">
-   <button type="submit" class="create-account-submit">Register</button>
+ <form class="user-create" style="display: flex;
+    flex-direction: column;
+    padding: 0 20em;"> 
+  <input style="width:400px; margin: 0 auto;" id="create-username" type="text">
+  <input style="width:400px; margin: 0 auto;" id="create-password" type="password">
+  <div style="text-align:center">
+   <button style="margin-top:2em;" type="submit" class="create-account-submit">Register</button>
+  </div>
  </form>
  </div>
  
  
- <div class="search-pieces">
+ <div style="text-align:center" class="search-pieces">
      <h1>Search for pieces here</h1>
-     <form class="piece-input">
-       <input id="piece-number" type="text">
-       <button type="submit" class="piece-submit">Search</button>
-       <button type="submit" class="find-sets">Find Sets</button>
+     <form class="piece-input" style="display: flex;
+    flex-direction: column;
+    padding: 0 20em;"> 
+       <input style="width:400px; margin: 0 auto;" id="piece-number" type="text">
+       <div style="text-align:center;">
+       <button style="margin-top:2em;" type="submit" class="piece-submit">Search</button>
+       <button style="margin-top:2em;" type="submit" class="find-sets">Find Sets</button>
+       </div>
      </form>
      
          <div class='pieces'>
@@ -43,7 +61,7 @@
          </div>
  </div>
  
-<div class='builds'>
+<div style="text-align:center" class='builds'>
   <div class='build'>
     <h2 class='build-title'></h2>
     <img class='build-image'/>
@@ -54,7 +72,7 @@
   </div>
 </div>
  
-<div class='favorites-section'>
+<div style="text-align:center" class='favorites-section'>
  
 </div>
  
@@ -62,18 +80,23 @@
      <div class='piece'>
                   <h2 class='piece-title'></h2>
                   <p class='piece-description'></p>
-                  <button type='button' class='add-piece'>Add Piece</button>
-                  <button type='button' class='remove-piece'>Remove Piece</button>
+                  <div style="text-align:center">
+                   <button type="button" class="add-piece" style="margin-bottom:30px">Add Piece</button>
+                   <button type='button' class='remove-piece'>Remove Piece</button>
+                  </div>
+                 
+                 
               
                   <a class="image-link" target="_new"><img class='piece-image'/></a>
                 
               </div>
  </div>
-  <!--<input id="input-part-sets" type="text">-->
+ 
 
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="index.js"></script>
 
+</div>
  </body>
  
  </html>

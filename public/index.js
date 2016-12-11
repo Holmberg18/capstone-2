@@ -160,7 +160,7 @@ function showPiece(piece) {
              } //end success
         });
         
-        template.find('.remove-piece').parent().remove();
+        template.find('.remove-piece').parent().parent().remove();
        
 	    
 	    
