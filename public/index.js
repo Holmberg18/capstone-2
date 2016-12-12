@@ -66,20 +66,16 @@ function getSetByPart(callbackFn) {
                  findMatch(total);
                  console.log('find matches are type: ' + JSON.stringify(typeof matchSets));
                  console.log(matchSets);
-            
+
                 $('.favorites-section').html('');
+                $('.favorites-section').show();
                 
                 
-                matchSets.forEach(function(item){
-                    var index = 0;
-                    var template = showSet(item);
+              for (var i =0;i<3;i++){
+                    var template = showSet(matchSets[i]);
                  $('.favorites-section').append(template);
-                    index++;
-                    if (index == 3){
-                        return;
-                    }
                     
-                });
+                }
                 
                  
              },error:function(err){
@@ -148,16 +144,18 @@ function showSet(piece) {
     
     // console.log(piece);
     
-   var template = $('.template .piece').clone();
+   var template = $('.template .set').clone();
        template = $(template);
        
-     if(piece.set_id){
-         template.find('.add-piece').hide();
-     } else{
-         template.find('.remove-piece').hide();
-     }
-        template.find('.piece-title').text(piece.name);
-        template.find('.piece-description').text("number of parts: " +piece.num_parts);
+    //  if(piece.set_id){
+    //      template.find('.add-piece').hide();
+    //  } else{
+    //      template.find('.remove-piece').hide();
+    //  }
+        template.find('.set-title').text(piece.name);
+        template.find('.num-parts').text("number of parts: " +piece.num_parts);
+         template.find('.title-link').attr("href","https://rebrickable.com/sets/"+piece.set_id);
+        
         // template.find('.piece-image').attr("src", piece.img_sm);
         // template.find('.image-link').attr("href", piece.img_sm);
          
@@ -352,6 +350,23 @@ $(document).ready(function(){
         });
 	});
 	
+	jQuery('.logout').click(function(e){
+	    e.preventDefault();
+	    
+	     $.ajax({
+             url:'/logout',
+             type:"GET",
+             success: function(){
+                $('.search-pieces').hide();
+                $('.builds').hide();
+                $('.welcome').show();
+                $('.favorites-section').hide();
+                
+             } //end success
+        });
+	    
+	});
+	
 	jQuery('.get-favorites').click(function(e){
 	    e.preventDefault();
 	   
@@ -364,6 +379,8 @@ $(document).ready(function(){
                 console.log(data);
                 STATE.pieces = data;
                  $('.favorites-section').html('');
+                 $('.favorites-section').show();
+                 
                  $('.pieces').html('');
                  
                 data.forEach(function(item){

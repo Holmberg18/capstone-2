@@ -49,10 +49,12 @@
      <form class="piece-input" style="display: flex;
     flex-direction: column;
     padding: 0 20em;"> 
-       <input style="width:400px; margin: 0 auto;" id="piece-number" type="text">
+       <input style="width:400px; margin: 0 auto;" id="piece-number" type="text" required>
        <div style="text-align:center;">
        <button style="margin-top:2em;" type="submit" class="piece-submit">Search</button>
-       <button style="margin-top:2em;" type="submit" class="find-sets">Find Shared Sets</button>
+       <button style="margin-top:2em;" type="button" class="find-sets">Find Shared Sets</button>
+       <button style="margin-top:2em;" type="button" class="logout">Logout</button>
+        <button type='button' class='get-favorites'>Get Favorite Pieces</button>
        </div>
      </form>
      
@@ -65,9 +67,9 @@
   <div class='build'>
     <h2 class='build-title'></h2>
     <img class='build-image'/>
-      <button type='button' class='add-favorite'>Add Favorite</button>
-      <button type='button' class='remove-favorite'>Remove Favorite</button>
-      <button type='button' class='get-favorites'>Get Favorite Pieces</button>
+      <!--<button type='button' class='add-favorite'>Add Favorite</button>-->
+      <!--<button type='button' class='remove-favorite'>Remove Favorite</button>-->
+     
       <!--<button type='button' class='show-favorites'>Show Favorite Groups</button>-->
   </div>
 </div>
@@ -90,7 +92,17 @@
                   <a class="image-link" target="_new"><img class='piece-image'/></a>
                 
               </div>
+            
+              <div class="set">
+               <a class="title-link" target="new">
+                  <h2 class='set-title'></h2>
+               </a>
+                  <p class='num-parts'></p>
+                 
+              </div>
  </div>
+ 
+ 
  
 
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>

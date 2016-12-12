@@ -84,9 +84,10 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
     isAuthenticated: true
   });
 });
+
 app.get('/logout', function(req, res){
     req.logout();
-    res.redirect('/');
+    res.sendStatus(200);
 });
 
 
