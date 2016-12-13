@@ -16,17 +16,17 @@ var STATE = {pieces: []};
 function getRecentLegoBuilds(callbackFn) {
     // we use a `setTimeout` to make this asynchronous
     // as it would be with a real AJAX call.
-    
-    
+
+
      var input = $('#input-field');
-     
-     
-    
+
+
+
 //      input.on('keydown', function(event) {
 //     if (event.keyCode != 13) {
 //         return;
 //     }
-   
+
 //     $.get('https://rebrickable.com/api/get_part?key=KdPMcvXXIi&format=json&part_id='+input.val(), function(data){
 //     console.log(data);
 //   })
@@ -38,7 +38,7 @@ function getRecentLegoBuilds(callbackFn) {
 
 
 // });
-  
+
 
 
 }
@@ -51,7 +51,7 @@ function getSetByPart(callbackFn) {
     var sets = {};
     var matchSets = [];
     STATE.pieces.forEach(function(piece){
-        
+
         var endpoint = 'https://rebrickable.com/api/get_part_sets?key=KdPMcvXXIi&format=json&part_id='+piece.part_id+'&color_id=&setheader=0';
       // console.log(endpoint);
            $.ajax({
@@ -69,26 +69,26 @@ function getSetByPart(callbackFn) {
 
                 $('.favorites-section').html('');
                 $('.favorites-section').show();
-                
-                
+
+
               for (var i =0;i<3;i++){
                     var template = showSet(matchSets[i]);
                  $('.favorites-section').append(template);
-                    
+
                 }
-                
-                 
+
+
              },error:function(err){
                  console.log(err);
                  total++;
                  findMatch(total);
              } //end success
         });
-        
+
     });
-     
+
      function findMatch(total){
-         
+
             if (total == STATE.pieces.length){
                      STATE.pieces.forEach(function(piece){
                          if(!piece.sets){
@@ -97,22 +97,22 @@ function getSetByPart(callbackFn) {
                          piece.sets.forEach(function(set_part){
                             if(set_part.set_id in sets){
                                 sets[set_part.set_id]++;
-                                
+
                             } else{
                                     sets[set_part.set_id] = 1;
-                            } 
-                            
+                            }
+
                             if(sets[set_part.set_id] == total){
                                 matchSets.push(set_part);
                             }
                          });
-                         
-                         
+
+
                      });
                      callbackFn(matchSets);
                  }
      }
-       
+
 
 }
 
@@ -123,7 +123,7 @@ function displayLegoBuilds(data) {
 	   //$('body').append(
     //     '<p>' + data.legoBuilds[index].text + '</p>');
     // }
-    
+
     //  $('body').append(
     //      '<p>Here are my builds!<br><br>' + JSON.stringify(data.legoBuilds[index]) + '</p>');
      }
@@ -141,12 +141,12 @@ $(function() {
 })
 
 function showSet(piece) {
-    
+
     // console.log(piece);
-    
+
    var template = $('.template .set').clone();
        template = $(template);
-       
+
     //  if(piece.set_id){
     //      template.find('.add-piece').hide();
     //  } else{
@@ -155,14 +155,14 @@ function showSet(piece) {
         template.find('.set-title').text(piece.name);
         template.find('.num-parts').text("number of parts: " +piece.num_parts);
          template.find('.title-link').attr("href","https://rebrickable.com/sets/"+piece.set_id);
-        
+
         // template.find('.piece-image').attr("src", piece.img_sm);
         // template.find('.image-link').attr("href", piece.img_sm);
-         
-         
-         	
+
+
+
 	template.find('.remove-piece').click(function(){
-	    
+
 	       $.ajax({
              url:'/pieces/'+piece.set_id,
              type:"DELETE",
@@ -170,27 +170,27 @@ function showSet(piece) {
              dataType:"json",
              success: function(data){
               console.log(data);
-              
+
              } //end success
         });
-        
+
         template.find('.remove-piece').parent().parent().remove();
-       
-	    
-	    
+
+
+
 	});
-        
+
         return template;
 }
 
 
 function showPiece(piece) {
-    
+
     // console.log(piece);
-    
+
    var template = $('.template .piece').clone();
        template = $(template);
-       
+
      if(piece._id){
          template.find('.add-piece').hide();
      } else{
@@ -200,11 +200,11 @@ function showPiece(piece) {
         template.find('.piece-description').text(piece.category);
         template.find('.piece-image').attr("src", piece.part_img_url);
         template.find('.image-link').attr("href", piece.part_img_url);
-         
-         
-         	
+
+
+
 	template.find('.remove-piece').click(function(){
-	    
+
 	       $.ajax({
              url:'/pieces/'+piece._id,
              type:"DELETE",
@@ -212,21 +212,21 @@ function showPiece(piece) {
              dataType:"json",
              success: function(data){
               console.log(data);
-              
+
              } //end success
         });
-        
+
         template.find('.remove-piece').parent().parent().remove();
-       
-	    
-	    
+
+
+
 	});
-        
+
         return template;
 }
 
 function addFavorite(favorite){
-    
+
       $.ajax({
              url:'/favorites',
              type:"POST",
@@ -242,7 +242,7 @@ function addFavorite(favorite){
 }
 
 function addPiece(piece){
-    
+
     $.ajax({
              url:'/pieces',
              type:"POST",
@@ -253,38 +253,54 @@ function addPiece(piece){
               console.log('piece has been added');
              }
         });
-    
+
 }
-	$('.search-pieces').hide();
-    $('.builds').hide();
-    $('.login-create').hide();
+
+
+
 $(document).ready(function(){
-    
-    
+
+    $('.login-create').hide();
+     $('.builds').hide();
+     $('.search-pieces').hide();
+     jQuery('.jon-bio').hide();
+     $('.favorites-section').hide();
+
+
+
+    jQuery('.jon-bio').click(function(){
+
+
+            $('.jon-bio').show();
+            $('.welcome').hide();
+
+        });
+
+
     jQuery('.find-sets').click(function(){
-         
-        
+
+
         getSetByPart(function(match_sets){
            // console.log(match_sets);
-            
+
         });
-        
+
     });
 
 
-    jQuery('.login-link').submit(function(e){
-        e.preventDefault();
+    jQuery('.login-button').click(function(){
+        // e.preventDefault();
         $('.login-create').show();
         $('.welcome').hide();
     });
-    
-    
+
+
 	jQuery('.user-login').submit(function(e){
 	    e.preventDefault();
-	    
+
 	    var userName = $('#log-in-username').val();
 	    var passWord = $('#log-in-password').val();
-	    
+
 	    $.ajax({
              url:'/login',
              type:"POST",
@@ -300,13 +316,13 @@ $(document).ready(function(){
              }
         });
 	});
-	
+
 	jQuery('.user-create').submit(function(e){
 	    e.preventDefault();
-	    
+
 	    var newUsername = $('#create-username').val();
 	    var newPassword = $('#create-password').val();
-	    
+
 	      $.ajax({
              url:'/users',
              type:"POST",
@@ -315,15 +331,18 @@ $(document).ready(function(){
              dataType:"json",
              success: function(data){
                console.log('successful user registration: '+data);
-                $('body').append('<p class="creation-message">User Account Created!</p>');
+                $('body').append('<div class="container"><div class="row"><p class="creation-message">User Account Created!</p></div></div>');
                 $('#create-username').val('');
 	             $('#create-password').val('');
+	              jQuery('.login-create').hide();
+               $('.search-pieces').show();
+                $('.builds').show();
              }
         });
 	});
 
 
-	
+
 	jQuery('.piece-input').submit(function(e){
 	    e.preventDefault();
 	    var partId = $('#piece-number').val();
@@ -334,25 +353,25 @@ $(document).ready(function(){
              dataType:"json",
              success: function(data){
                 //console.log(data);
-                
+
                  $('.pieces').html('');
 
                var template = showPiece(data);
-               
+
                $('.pieces').html(template);
-               
+
                	jQuery('.add-piece').click(function(){
                     addPiece(data);
-	            
+
             	});
-               
+
              }
         });
 	});
-	
-	jQuery('.logout').click(function(e){
-	    e.preventDefault();
-	    
+
+	jQuery('.logout').click(function(){
+
+
 	     $.ajax({
              url:'/logout',
              type:"GET",
@@ -361,15 +380,15 @@ $(document).ready(function(){
                 $('.builds').hide();
                 $('.welcome').show();
                 $('.favorites-section').hide();
-                
+
              } //end success
         });
-	    
+
 	});
-	
+
 	jQuery('.get-favorites').click(function(e){
 	    e.preventDefault();
-	   
+
 	       $.ajax({
              url:'/pieces',
              type:"GET",
@@ -380,46 +399,45 @@ $(document).ready(function(){
                 STATE.pieces = data;
                  $('.favorites-section').html('');
                  $('.favorites-section').show();
-                 
+
                  $('.pieces').html('');
-                 
+
                 data.forEach(function(item){
-                    
+
                     var template = showPiece(item);
                  $('.favorites-section').append(template);
-                
-                    
+
+
                 });
-                
-        
+
+
              } //end success
         });
 	});
 
 
-	jQuery('.add-favorite').click(function(e){
-	    e.preventDefault();
+	jQuery('.add-favorite').click(function(){
 	    
+
 	    var userFavorite = $('.favorites-section').html();
 	    addFavorite(userFavorite);
 	});
 
-	
-	
+
+
 });//end document.ready
-	    
+
 	   // jQuery.post('/login', {username: userName, password: passWord}, function(err,data){
-	        
-	        
-	    
+
+
+
 	   // console.log(err);
 	   // console.log(data);
-	    
+
 	   //    //data: JSON.stringify({
     //     //   username: data.username,
     //     //   password: data.password
     //     // })
-	    
+
 	   //	},"json");
-	    
-	
+
