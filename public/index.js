@@ -259,6 +259,18 @@ function addPiece(piece){
 
 
 $(document).ready(function(){
+    
+    jQuery('.welcome-page').click(function(){
+        
+     $('.login-create').hide();
+     $('.builds').hide();
+     $('.search-pieces').hide();
+     jQuery('.jon-bio').hide();
+     $('.favorites-section').hide();
+     $('.welcome').show();
+     
+        
+    });
 
     $('.login-create').hide();
      $('.builds').hide();
@@ -268,11 +280,15 @@ $(document).ready(function(){
 
 
 
-    jQuery('.jon-bio').click(function(){
+    jQuery('.jon-bio-button').click(function(){
 
-
-            $('.jon-bio').show();
+            $('.login-create').hide();
+            $('.builds').hide();
+            $('.search-pieces').hide();
+            $('.favorites-section').hide();
             $('.welcome').hide();
+            $('.jon-bio').show();
+            
 
         });
 

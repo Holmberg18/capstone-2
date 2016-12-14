@@ -7,12 +7,23 @@
 	  <!-- Compiled and minified CSS -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
  
+ <style>
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+</style>
+ 
    <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper blue darken-4">
       <a href="#" class="brand-logo right"></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li class="jon-bio">Jon's Bio</li>
-        <li class="welcome-page">Welcome Page</li>
+        <li style="padding:0 2em;" class="jon-bio-button"><button class="astext">Jon's Bio</button></li>
+        <li style="padding:0 2em;" class="welcome-page astext"><button class="astext">Welcome</button></li>
       </ul>
     </div>
   </nav>
@@ -20,9 +31,7 @@
  </head>
  <body>
 
-<style>
 
-</style>
  <div class="container">     
       
   <!--<input id="input-field" type="text">-->
@@ -38,16 +47,12 @@
   <div style="text-align:center" class="jon-bio">
   <h1>Jon's Bio</h1>
   <p>I am a junior software developer living in Northern California. I enjoy making apps on my own time and researching more about web development.</p>
-  <form class="login-link">
-   <h1>Welcome, please login!</h1>
-  <button type="submit" class="login-button">Login</button>
-  </form>
   </div>
   
  <div style="text-align:center;" class="login-create">
  <h1>Login here</h1>
  <form class="user-login"> 
-  <input style="width:400px; margin: 0 auto;" id="log-in-username" type="text">
+  <input style="width:400px; margin: 0 auto;" id="log-in-username" type="text"><br>
   <input style="width:400px; margin: 0 auto;" id="log-in-password" type="password">
   <div stlye="text-align:center">
    <button style="margin-top:2em;" type="submit" class="password-submit">Login</button>
@@ -131,7 +136,7 @@
 <script src="index.js"></script>
  </body>
  
-<footer class="page-footer">
+<footer class="page-footer blue darken-4">
           <div class="container">
             <div class="row">
               <div class="col l4 offset-l2 s12">
