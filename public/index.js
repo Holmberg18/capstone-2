@@ -369,7 +369,7 @@ $(document).ready(function(){
              dataType:"json",
              success: function(data){
                 //console.log(data);
-
+                $('.favorites-section').hide();
                  $('.pieces').html('');
 
                var template = showPiece(data);
