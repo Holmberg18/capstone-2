@@ -9,6 +9,7 @@ var MongoStore = require('connect-mongo')(session);
 var LocalStrategy = require('passport-local').Strategy;
 var jsonParser = bodyParser.json();
 
+
 var app = express();
 var passport = require('passport');
 
@@ -210,6 +211,8 @@ if (require.main === module) {
         }
     });
 };
+module.exports.runServer = runServer;
+module.exports.app = app;
 
 app.get('/pieces', function(req,res){
     
@@ -226,7 +229,7 @@ app.get('/pieces', function(req,res){
 
 app.post('/pieces', function(req,res){
     
-    var query = {"_id": req.user.id};
+    var query = {"_id": req.user._id};
     var update = {$push:{favorites: {name: req.body.partName, part_id: req.body.partId, part_url: req.body.partURL, part_img_url: req.body.partImage, category: req.body.partDesc}}};
 
     User.findOneAndUpdate(query, update, function(err){
