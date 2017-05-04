@@ -1,5 +1,5 @@
 # lego-builder
-<a href="https://mysterious-depths-42062.herokuapp.com/">Check out the app here!</a>
+<a href="https://mysterious-depths-42062.herokuapp.com/">Check out the app here!</a><br>
 This app allows users to search for lego pieces, save those pieces for later viewing, see which complete sets those pieces belong to and view them on rebrickable.com. 
 
 
