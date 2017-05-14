@@ -260,7 +260,7 @@ function addPiece(piece){
 
 $(document).ready(function(){
 
-  
+
 
     jQuery('.welcome-page').click(function(){
 
@@ -441,7 +441,7 @@ $(document).ready(function(){
 	    addFavorite(userFavorite);
 	});
 
-
+ $(".button-collapse").sideNav();
 
 });//end document.ready
 
