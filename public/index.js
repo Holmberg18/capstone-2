@@ -260,7 +260,7 @@ function addPiece(piece){
 
 $(document).ready(function(){
 
-    $(".dropdown-button").dropdown();
+  
 
     jQuery('.welcome-page').click(function(){
 
