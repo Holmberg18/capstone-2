@@ -1,9 +1,35 @@
 @media only screen and (min-width: 320px) {
 
-    input#create-password {
+
+    ul#nav-mobile {
+    margin-top: 2em;
+}
+
+    button.remove-piece {
+        font-size:3em;
+        padding:.5em
+}
+
+
+
+    img.piece-image {
+    width: 30%;
+}
+
+
+    button.add-piece {
+    font-size: 3em;
+    padding: .5em;
+}
+
+p.piece-description {
+    font-size: 3em;
+}
+
+input#create-password {
     font-size: 4em;
     height: 1em;
-   }
+}
 
 input#create-username {
     font-size:4em;
@@ -127,13 +153,13 @@ a.grey-text.text-lighten-3 {
 @media only screen and (min-width: 1024px) {
 
 .jon-bio-button{
-    font-size:1.5em;
-    margin-top: 3em;
+    font-size: 1.6em;
+    /* margin-top: 3em; */
 }
 
 button.astext.welcome-button{
     font-size:2.7em;
-    margin-top:1.6em;
+    /* margin-top:1.6em; */
 }
 
 .col.l4.offset-l2.s12 {
