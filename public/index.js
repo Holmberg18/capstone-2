@@ -259,17 +259,19 @@ function addPiece(piece){
 
 
 $(document).ready(function(){
-    
+
+    $(".dropdown-button").dropdown();
+
     jQuery('.welcome-page').click(function(){
-        
+
      $('.login-create').hide();
      $('.builds').hide();
      $('.search-pieces').hide();
      jQuery('.jon-bio').hide();
      $('.favorites-section').hide();
      $('.welcome').show();
-     
-        
+
+
     });
 
     $('.login-create').hide();
@@ -288,7 +290,7 @@ $(document).ready(function(){
             $('.favorites-section').hide();
             $('.welcome').hide();
             $('.jon-bio').show();
-            
+
 
         });
 
@@ -433,7 +435,7 @@ $(document).ready(function(){
 
 
 	jQuery('.add-favorite').click(function(){
-	    
+
 
 	    var userFavorite = $('.favorites-section').html();
 	    addFavorite(userFavorite);
@@ -456,4 +458,3 @@ $(document).ready(function(){
     //     // })
 
 	   //	},"json");
-
