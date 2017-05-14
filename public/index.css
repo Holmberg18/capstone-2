@@ -1,5 +1,41 @@
 @media only screen and (min-width: 320px) {
 
+    input#create-password {
+    font-size: 4em;
+    height: 1em;
+   }
+
+input#create-username {
+    font-size:4em;
+    height:2em
+}
+
+
+.create-account-title{
+    margin-top:1em
+}
+
+input#log-in-username {
+    font-size: 4rem;
+    height:2em;
+}
+
+input#log-in-password {
+    font-size: 4em;
+    height:1em;
+}
+
+ .jon-bio {
+    margin-top: 5em;
+    font-size:3em;
+}
+
+
+
+p.part-id-reference {
+    font-size: 4em;
+}
+
 input#piece-number {
     font-size: 5em;
     margin-top: 2em;
