@@ -1,0 +1,182 @@
+@media only screen and (min-width: 320px) {
+
+    input#create-password {
+    font-size: 4em;
+    height: 1em;
+   }
+
+input#create-username {
+    font-size:4em;
+    height:2em
+}
+
+
+.create-account-title{
+    margin-top:1em
+}
+
+input#log-in-username {
+    font-size: 4rem;
+    height:2em;
+}
+
+input#log-in-password {
+    font-size: 4em;
+    height:1em;
+}
+
+ .jon-bio {
+    margin-top: 5em;
+    font-size:3em;
+}
+
+
+
+p.part-id-reference {
+    font-size: 4em;
+}
+
+input#piece-number {
+    font-size: 5em;
+    margin-top: 2em;
+    height: 2em;
+}
+
+button.get-favorites {
+    font-size:3em;
+    margin:.5em
+}
+
+button.logout {
+    font-size:3em;
+}
+
+button.find-sets {
+    font-size:3em;
+    margin:0 .5em
+}
+
+button.piece-submit {
+    font-size: 3em;
+}
+
+h1.search-pieces-title {
+    margin-top:2em;
+    font-size:10em;
+}
+
+h1.login-title {
+    margin-top: 2em;
+    font-size:8em
+}
+
+h1.create-account-title {
+    font-size:8em;
+}
+
+button.password-submit {
+    font-size:3em;
+    padding:.2em 1em
+}
+
+button.create-account-submit{
+    font-size:3em;
+    padding:.2em 1em;
+    margin-bottom:2em
+}
+
+h1.rebrickable-app-welcome-title {
+    font-size: 9em;
+    margin-top: 2em;
+}
+
+p.welcome-message {
+    font-size: 4em;
+}
+
+.nav-wrapper.blue.darken-4.welcome-nav-bar {
+    height: 15em;
+
+}
+
+h3.welcome-sign-in {
+    font-size: 4em;
+}
+
+button.login-button {
+    font-size: 5em;
+    padding: .5em 1em;
+    margin:1em auto;
+}
+
+footer.page-footer.blue.darken-4 {
+    height: 225px;
+}
+
+h5.white-text {
+    font-size: 4em;
+}
+
+a.grey-text.text-lighten-3 {
+    font-size: 3em;
+}
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+.jon-bio-button{
+    font-size:1.5em;
+    margin-top: 3em;
+}
+
+button.astext.welcome-button{
+    font-size:2.7em;
+    margin-top:1.6em;
+}
+
+.col.l4.offset-l2.s12 {
+    width: 70%;
+}
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+.col.l4.offset-l2.s12{
+    position:absolute;
+    left:0;
+    margin-left:2em
+}
+
+}
+
+@media only screen and (min-width: 2560px) {
+
+button.login-button {
+    font-size:3em;
+}
+
+.col.l4.offset-l2.s12 {
+   position:absolute;
+   left:0;
+   margin-left:3em;
+
+}
+
+
+
+}
+
+
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
