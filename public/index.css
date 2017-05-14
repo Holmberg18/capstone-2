@@ -1,8 +1,24 @@
 @media only screen and (min-width: 320px) {
 
+i.material-icons {
+    font-size: 5em !important;
+    margin-top: .3em;
+}
+
+    .jon-bio-button{
+    font-size: 1.6em;
+    /* margin-top: 3em; */
+}
+
+button.astext.welcome-button{
+    font-size:2.7em;
+    /* margin-top:1.6em; */
+}
+
+
   ul#mobile-demo {
     background-color: #0D47A1;
-} 
+}
 
 
     ul#nav-mobile {
@@ -125,8 +141,7 @@ p.welcome-message {
 }
 
 .nav-wrapper.blue.darken-4.welcome-nav-bar {
-    height: 15em;
-
+    height: 8em;
 }
 
 h3.welcome-sign-in {
@@ -156,15 +171,6 @@ a.grey-text.text-lighten-3 {
 
 @media only screen and (min-width: 1024px) {
 
-.jon-bio-button{
-    font-size: 1.6em;
-    /* margin-top: 3em; */
-}
-
-button.astext.welcome-button{
-    font-size:2.7em;
-    /* margin-top:1.6em; */
-}
 
 .col.l4.offset-l2.s12 {
     width: 70%;
