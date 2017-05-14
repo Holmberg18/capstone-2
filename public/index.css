@@ -1,25 +1,13 @@
 @media only screen and (min-width: 320px) {
 
-<<<<<<< HEAD
-=======
-  h2.piece-title {
-    font-size: 2em;
-}
-
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
     input#create-password {
     font-size: 4em;
     height: 1em;
    }
 
 input#create-username {
-<<<<<<< HEAD
     font-size:4em;
     height:2em
-=======
-    font-size: 3REM;
-    height:2em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
 }
 
 
@@ -28,11 +16,7 @@ input#create-username {
 }
 
 input#log-in-username {
-<<<<<<< HEAD
     font-size: 4rem;
-=======
-    font-size: 3rem;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
     height:2em;
 }
 
@@ -49,26 +33,16 @@ input#log-in-password {
 
 
 p.part-id-reference {
-<<<<<<< HEAD
     font-size: 4em;
 }
 
 input#piece-number {
     font-size: 5em;
     margin-top: 2em;
-=======
-    font-size: 2em;
-}
-
-input#piece-number {
-    font-size: 3em;
-    margin-top: 1em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
     height: 2em;
 }
 
 button.get-favorites {
-<<<<<<< HEAD
     font-size:3em;
     margin:.5em
 }
@@ -98,37 +72,6 @@ h1.login-title {
 
 h1.create-account-title {
     font-size:8em;
-=======
-    font-size: 2em;
-    margin:.5em;
-}
-
-button.logout {
-    font-size: 2em;
-}
-
-button.find-sets {
-    font-size: 2em;
-    margin:0 .5em;
-}
-
-button.piece-submit {
-    font-size: 2em;
-}
-
-h1.search-pieces-title {
-    margin-top: 4em;
-    font-size: 4em;
-}
-
-h1.login-title {
-    margin-top: 3em;
-    font-size: 5em;
-}
-
-h1.create-account-title {
-    font-size: 5em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
 }
 
 button.password-submit {
@@ -143,21 +86,12 @@ button.create-account-submit{
 }
 
 h1.rebrickable-app-welcome-title {
-<<<<<<< HEAD
     font-size: 9em;
     margin-top: 2em;
 }
 
 p.welcome-message {
     font-size: 4em;
-=======
-    font-size: 6em;
-    margin-top: 3em;
-}
-
-p.welcome-message {
-    font-size: 3em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
 }
 
 .nav-wrapper.blue.darken-4.welcome-nav-bar {
@@ -166,19 +100,11 @@ p.welcome-message {
 }
 
 h3.welcome-sign-in {
-<<<<<<< HEAD
     font-size: 4em;
 }
 
 button.login-button {
     font-size: 5em;
-=======
-    font-size: 3em;
-}
-
-button.login-button {
-    font-size: 2em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
     padding: .5em 1em;
     margin:1em auto;
 }
@@ -188,19 +114,11 @@ footer.page-footer.blue.darken-4 {
 }
 
 h5.white-text {
-<<<<<<< HEAD
     font-size: 4em;
 }
 
 a.grey-text.text-lighten-3 {
     font-size: 3em;
-=======
-    font-size: 2em;
-}
-
-a.grey-text.text-lighten-3 {
-    font-size: 2em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
 }
 
 }
@@ -209,22 +127,13 @@ a.grey-text.text-lighten-3 {
 @media only screen and (min-width: 1024px) {
 
 .jon-bio-button{
-<<<<<<< HEAD
     font-size:1.5em;
-=======
-    font-size: 30px;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
     margin-top: 3em;
 }
 
 button.astext.welcome-button{
-<<<<<<< HEAD
     font-size:2.7em;
     margin-top:1.6em;
-=======
-    font-size: 30px;
-    margin-top: 2.9em;
->>>>>>> d9b37d3cded71bfb0a542abc7be18e654df9a565
 }
 
 .col.l4.offset-l2.s12 {
