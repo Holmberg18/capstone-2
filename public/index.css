@@ -10,7 +10,7 @@ i.material-icons {
     /* margin-top: 3em; */
     background-color: #0D47A1;
     border: 0;
-    margin: .5em;
+    margin: .6em !important;
 }
 
 button.astext.welcome-button{
