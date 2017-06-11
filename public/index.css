@@ -1,7 +1,7 @@
 @media only screen and (min-width: 320px) {
 
  li.welcome-page.astext {
-    margin-top: 1.5em;
+    /* margin-top: 1.5em; */
 }
 
 i.material-icons {
@@ -10,16 +10,16 @@ i.material-icons {
 }
 
     .jon-bio-button{
-    font-size: 2.6rem;
+    font-size: 1.6rem;
     /* margin-top: 3em; */
     background-color: #0D47A1;
     border: 0;
-    margin: .6em !important;
+    /* margin: .6em !important; */
 }
 
 button.astext.welcome-button{
-    font-size:2.7em;
-    margin: .6em;
+    font-size: 1.6em;
+    /* margin: .6em; */
 }
 
 
@@ -139,12 +139,12 @@ button.create-account-submit{
 }
 
 h1.rebrickable-app-welcome-title {
-    font-size: 9em;
+    font-size: 5em;
     margin-top: 2em;
 }
 
 p.welcome-message {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 .nav-wrapper.blue.darken-4.welcome-nav-bar {
@@ -152,12 +152,12 @@ p.welcome-message {
 }
 
 h3.welcome-sign-in {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 button.login-button {
-    font-size: 5em;
-    padding: .5em 1em;
+    font-size: 3em;
+    padding: 0.2em .5em;
     margin:1em auto;
 }
 
@@ -166,11 +166,11 @@ footer.page-footer.blue.darken-4 {
 }
 
 h5.white-text {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 a.grey-text.text-lighten-3 {
-    font-size: 3em;
+    font-size: 2em;
 }
 
 }
