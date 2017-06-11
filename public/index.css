@@ -59,18 +59,18 @@ input#create-password {
 }
 
 input#create-username {
-    font-size:4em;
-    height:2em
+    /* font-size:4em; */
+    /* height:2em; */
 }
 
 
 .create-account-title{
-    margin-top:1em
+    margin-top:1em;
 }
 
 input#log-in-username {
-    font-size: 4rem;
-    height:2em;
+    /* font-size: 4rem; */
+    /* height:2em; */
 }
 
 input#log-in-password {
@@ -120,11 +120,11 @@ h1.search-pieces-title {
 
 h1.login-title {
     margin-top: 2em;
-    font-size:8em
+    /* font-size:8em */
 }
 
 h1.create-account-title {
-    font-size:8em;
+    /* font-size: 4em; */
 }
 
 button.password-submit {
