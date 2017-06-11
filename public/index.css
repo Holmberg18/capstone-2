@@ -45,7 +45,7 @@ button.astext.welcome-button{
 
 
     button.add-piece {
-    font-size: 3em;
+    font-size: 2em;
     padding: .5em;
 }
 
@@ -80,7 +80,7 @@ input#log-in-password {
 
  .jon-bio {
     margin-top: 5em;
-    font-size:3em;
+    font-size: 2em;
 }
 
 
