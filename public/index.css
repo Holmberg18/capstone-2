@@ -54,8 +54,8 @@ p.piece-description {
 }
 
 input#create-password {
-    font-size: 4em;
-    height: 1em;
+    /* font-size: 4em; */
+    /* height: 1em; */
 }
 
 input#create-username {
@@ -74,8 +74,8 @@ input#log-in-username {
 }
 
 input#log-in-password {
-    font-size: 4em;
-    height:1em;
+    /* font-size: 4em; */
+    /* height:1em; */
 }
 
  .jon-bio {
@@ -86,12 +86,12 @@ input#log-in-password {
 
 
 p.part-id-reference {
-    font-size: 4em;
+    font-size: 2em;
 }
 
 input#piece-number {
     font-size: 5em;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     height: 2em;
 }
 
@@ -115,7 +115,7 @@ button.piece-submit {
 
 h1.search-pieces-title {
     margin-top:2em;
-    font-size:10em;
+    font-size: 5em;
 }
 
 h1.login-title {
@@ -135,7 +135,7 @@ button.password-submit {
 button.create-account-submit{
     font-size:3em;
     padding:.2em 1em;
-    margin-bottom:2em
+    /* margin-bottom:2em; */
 }
 
 h1.rebrickable-app-welcome-title {
